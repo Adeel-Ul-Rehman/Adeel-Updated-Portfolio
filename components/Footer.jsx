@@ -22,7 +22,7 @@ export default function Footer() {
                         placeholder="Type your message here..."
                         value={emailContent}
                         onChange={(e) => setEmailContent(e.target.value)}
-                        className="w-full h-16 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300 resize-none md:border-2 md:border-black md:focus:ring-blue-300"
+                        className="w-full h-16 p-2 border text-black border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300 resize-none md:border-2 md:border-black md:focus:ring-blue-300"
                     ></textarea>
                     <div className="flex justify-end mt-2">
                         <button
