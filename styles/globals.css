@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables for primary and secondary colors */
+:root {
+  --primary-color: #edf2fc;
+  --secondary-color: #212121;
+}
+
+.dark {
+  --primary-color: #000106;
+  --secondary-color: #ffffff;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+/* For smooth fade-in and slide-in transitions */
+.education-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.education-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Transition for images */
+.education-img {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+.education-section.show .education-img {
+  opacity: 1;
+}
+
+/* Optional: Add some hover effects on images */
+.education-img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* If dark mode is active, adjust the text and background color */
+.dark-mode .education-section {
+  background-color: #2d2d2d; /* Dark background */
+  color: white; /* Light text */
+}
+
+/* Responsive layout for mobile devices */
+@media (max-width: 768px) {
+  .image-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .image-container .education-img:nth-child(3) {
+    grid-column: span 2;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .education-img.school-1 {
+    height: 130px; /* Adjust to your desired height */
+  }
+  .education-img.college-2 {
+    height: 100px; /* Adjust to your desired height */
+  }
+}
+
+/* Dark Mode Styles for Contact Page */
+body.contact-page.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.contact-page.dark .bg-white {
+  background-color: #333333 !important;
+}
+
+body.contact-page.dark .bg-primary {
+  background-color: #121212 !important;
+}
+
+body.contact-page.dark .text-black {
+  color: #ffffff !important;
+}
+
+body.contact-page.dark .text-blue {
+  color: #1e90ff !important;
+}
+
+body.contact-page.dark input,
+body.contact-page.dark textarea {
+  background-color: #444444 !important;
+  color: #ffffff !important;
+  border: 1px solid #555555 !important;
+}
+
+body.contact-page.dark .border-black {
+  border-color: #555555 !important;
+}
+
+body.contact-page.dark .hover\:bg-primary:hover {
+  background-color: #00308f !important;
+}
+
+body.contact-page.dark .bg-primary {
+  background-color: #00308f !important;
+}
+
+body.contact-page.dark .text-white {
+  color: #ffffff !important;
+}
+
+body.contact-page.dark .bg-dark {
+  background-color: #333333 !important;
+}
+
+body.contact-page.dark .bg-darker {
+  background-color: #444444 !important;
+}
+
+body.contact-page.dark .border-dark {
+  border-color: #555555 !important;
+}
+
+/* Adjusting other elements */
+body.contact-page.dark a {
+  color: #1e90ff !important;
+}
+
+body.contact-page.dark .text-green-500 {
+  color: #00ff00 !important;
+}
+
+body.contact-page.dark .text-red-500 {
+  color: #ff0000 !important;
+}
+
+body.contact-page.dark .bg-primary {
+  background-color: #00308f !important;
+}
+
+
+
+/*Skills page style*/

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7002b6865a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="music-play">
+            <nav id="name">
+                <div class="circle">
+                    <i class="fa-solid fa-circle-left"></i>
+                </div>
+
+                <div class="circle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+            <div class="name">
+                <h1>ADEEL MUSICS</h1>
+            </div>
+            <img src="media/maxresdefault.jpg" class="song-img">
+            <h1>Tauba Tauba</h1>
+            <p> Karan Aujla ft.Vicky Kaushal</p>
+
+            <audio id="song">
+                <source src="media/Tauba Tauba  Bad Newz  Vicky Kaushal  Triptii Dimri  Karan Aujla  In cinemas 19th July.mp3"    type="audio/mpeg">
+            </audio>
+            <input type="range" value="0" id="progress">
+            <div class="controls">
+                <div><i class="fa-solid fa-backward-fast"></i></div>
+                <div onclick="playPause()"><i class="fa-solid fa-play"  id="ctrlIcon"></i></div>
+                <div><i class="fa-solid fa-forward-fast"></i></div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+let progress = document.getElementById("progress");
+let song = document.getElementById("song");
+let plauctrlIconIcon = document.getElementById("ctrlIcon");
+
+song.onloadedmetadata = function(){
+    progress.max = song.duration;
+    progress.value = song.currentTime;
+}
+
+function playPause(){
+    if(ctrlIcon.classList.contains("fa-pause")){
+        song.pause();
+        ctrlIcon.classList.remove("fa-pause");
+        ctrlIcon.classList.add("fa-play");
+    }
+    else{
+        song.play();
+        ctrlIcon.classList.add("fa-pause");
+        ctrlIcon.classList.remove("fa-play");
+    }
+} 
+
+if(song.play()){
+    setInterval(()=>{
+progress.value = song.currentTime;
+    },500)
+}
+
+progress.onchange = function(){
+    song.play();
+    song.currentTime = progress.value;
+    ctrlIcon.classList.add("fa-pause");
+    ctrlIcon.classList.remove("fa-play");
+
+}
+
+</script>
+
+
+</body>
+
+</html>

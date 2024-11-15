@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <h2><span>ADEEL's</span> Creation </h2>
+        <h1>Text To Speech <span>Converter</span></h1>
+        <textarea placeholder="Write anything here..."></textarea>
+        <div class="row">
+            <select></select>
+            <button><img src="images/play.png" alt="Play">Listen</button>
+        </div>
+    </div>
+    <script >
+
+let speech = new SpeechSynthesisUtterance();
+let voices = [];
+let voiceSelect = document.querySelector("select");
+
+function populateVoiceList() {
+    voices = window.speechSynthesis.getVoices();
+    voiceSelect.innerHTML = ''; // Clear previous options
+
+    voices.forEach((voice, i) => {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = `${voice.name} (${voice.lang})`;
+        voiceSelect.appendChild(option);
+    });
+
+    if (voices.length > 0) {
+        speech.voice = voices[0]; // Set the first voice as default
+    }
+
+    console.log('Voices loaded:', voices);
+}
+
+populateVoiceList();
+
+if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
+voiceSelect.addEventListener("change", () => {
+    speech.voice = voices[voiceSelect.value];
+    console.log('Voice changed:', speech.voice);
+});
+
+document.querySelector("button").addEventListener("click", () => {
+    let text = document.querySelector("textarea").value;
+    if (text) {
+        speech.text = text;
+        window.speechSynthesis.speak(speech);
+        console.log('Speech text:', speech.text);
+    } else {
+        console.log('Textarea is empty');
+    }
+});
+
+
+
+
+    </script>
+</body>
+</html>

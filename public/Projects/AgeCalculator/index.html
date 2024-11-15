@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculator">
+            <h1><span>Age Calculator</span></h1>
+            <div class="input-box">
+                <input type="date" id="date" />
+                <button onclick="calAge()">Calculate</button>
+            </div>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        let userInput = document.getElementById("date");
+        userInput.max = new Date().toISOString().split("T")[0];
+
+        let result = document.getElementById("result");
+
+        // Function to get Lahore time
+        function getLocalTime() {
+            let offset = 5 * 60; // Lahore is UTC+5
+            let utc = new Date().getTime() + (new Date().getTimezoneOffset() * 60000);
+            let localTime = new Date(utc + (3600000 * offset));
+            return localTime;
+        }
+
+        let intervalId;
+
+        function calAge() {
+            clearInterval(intervalId); // Clear previous interval if any
+
+            let birthDate = new Date(userInput.value);
+            let today = getLocalTime(); // Use Lahore local time
+
+            if (birthDate > today) {
+                result.innerHTML = "Please select a valid date.";
+                return;
+            }
+
+            function updateAge() {
+                let age = calculateAge(birthDate, getLocalTime());
+                result.innerHTML = `You are now <span>${age.years}</span> years, <span>${age.months}</span> months, <span>${age.days}</span> days, <span>${age.hours}</span> hours, <span>${age.minutes}</span> minutes, and <span>${age.seconds}</span> seconds old.`;
+            }
+
+            updateAge(); // Initial update
+            intervalId = setInterval(updateAge, 1000); // Update every second
+        }
+
+        function calculateAge(birthDate, today) {
+            let d1 = birthDate.getDate();
+            let m1 = birthDate.getMonth();
+            let y1 = birthDate.getFullYear();
+            let h1 = birthDate.getHours();
+            let M1 = birthDate.getMinutes();
+            let s1 = birthDate.getSeconds();
+
+            let d2 = today.getDate();
+            let m2 = today.getMonth();
+            let y2 = today.getFullYear();
+            let h2 = today.getHours();
+            let M2 = today.getMinutes();
+            let s2 = today.getSeconds();
+
+            let years = y2 - y1;
+            let months = m2 - m1;
+            let days = d2 - d1;
+            let hours = h2 - h1;
+            let minutes = M2 - M1;
+            let seconds = s2 - s1;
+
+            if (seconds < 0) {
+                seconds += 60;
+                minutes--;
+            }
+
+            if (minutes < 0) {
+                minutes += 60;
+                hours--;
+            }
+
+            if (hours < 0) {
+                hours += 24;
+                days--;
+            }
+
+            if (days < 0) {
+                months--;
+                let daysInPrevMonth = getDaysInMonth(y2, m2 - 1);
+                days += daysInPrevMonth;
+            }
+
+            if (months < 0) {
+                months += 12;
+                years--;
+            }
+
+            return { years, months, days, hours, minutes, seconds };
+        }
+
+        function getDaysInMonth(year, month) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        // Bind the Calculate button
+        document.querySelector("button").addEventListener("click", calAge);
+    </script>
+</body>
+
+</html>

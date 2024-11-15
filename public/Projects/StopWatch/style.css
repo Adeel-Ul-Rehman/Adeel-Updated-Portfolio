@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    background-image: url('images/1_0ubYRV_WNR9iYrzUAVINHw.jpg'); 
+    background-size: cover; 
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-style: italic;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+.stopWatch {
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 300;
+    margin-bottom: 25px;
+    left: 50px;
+    position: relative;
+    left: 50px;  
+    top: 70px;    
+}
+h2 {
+    color: #9c0808;
+    font-size: 70px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    right: 480px;
+    position: relative;
+    right: 480px;  
+    bottom: 80px; 
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: normal;   
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px; 
+    left: 50px;
+    position: relative;
+    left: 50px;  
+    top: 80px;   
+}
+.buttons img {
+    width: 50px; 
+    height: 50px;
+    cursor: pointer;
+}
+.buttons .playButton{
+    transform: scale(1.5);
+}
+
+@media (max-width: 600px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px;
+        background-size: contain;
+        background-image: url('images/1_0ubYRV_WNR9iYrzUAVINHw.jpg'); 
+        background-size: 600px;
+        background-position-y: 160px;
+    }
+
+    .stopWatch {
+        width: 130%;
+        max-width: 70%;
+        margin: 0 auto;
+        padding: 55px;
+        border-radius: 10px;
+        position: relative;
+        top: 10px;
+    }
+
+    h1 {
+        font-size: 40px;
+        position: relative;
+        left: 0;
+        top: 140px;
+        left: 20px;
+    }
+
+    h2 {
+        font-size: 40px;
+        right: 0;
+        bottom: 30px;
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        gap: 20px;
+        left: 0;
+        top: 0;
+        position: relative;
+        top: 150px;
+        left: 30px;
+    }
+
+    .buttons img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .buttons .playButton {
+        transform: scale(1.2);
+    }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="hero">
+        <img src="image/IMG_20231112_161838.jpg" class="pic">
+        <div class="container">
+            <div class="date">
+                <span id="day">00</span>
+                <span>:</span>
+                <span id="month">00</span>
+                <span>:</span>
+                <span id="year">0000</span>
+            </div>
+            <div class="Nameday">
+                <span id="dayName">Monday</span>
+            </div>
+            <div class="clock">
+                <span id="hrs">00</span>
+                <span>:</span>
+                <span id="mins">00</span>
+                <span>:</span>
+                <span id="sec">00</span>
+                <span id="ampm" class="cycle">AM</span>
+            </div>
+        </div>
+<h1 class="adeel"> 𝔸𝔻𝔼𝔼𝕃 𝔸𝕁 </h1>
+    </div>
+
+    <script>
+        let hrs = document.getElementById("hrs");
+        let mins = document.getElementById("mins");
+        let sec = document.getElementById("sec");
+        let ampm = document.getElementById("ampm");
+        let dayName = document.getElementById("dayName");
+        let day = document.getElementById("day");
+        let month = document.getElementById("month");
+        let year = document.getElementById("year");
+    
+        function updateTime() {
+            let currentTime = new Date();
+            let hour = currentTime.getHours();
+            let period = "AM";
+            
+            if (hour >= 12) {
+                period = "PM";
+                if (hour > 12) {
+                    hour -= 12;
+                }
+            }
+            if (hour === 0) {
+                hour = 12;
+            }
+    
+            hrs.innerHTML = (hour < 10 ? "0" : "") + hour;
+            mins.innerHTML = (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
+            sec.innerHTML = (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
+            ampm.innerHTML = period;
+        }
+    
+        function updateDate() {
+            let currentDate = new Date();
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            
+            day.innerHTML = (currentDate.getDate() < 10 ? "0" : "") + currentDate.getDate();
+            month.innerHTML = (currentDate.getMonth() + 1 < 10 ? "0" : "") + (currentDate.getMonth() + 1);
+            year.innerHTML = currentDate.getFullYear();
+            dayName.innerHTML = days[currentDate.getDay()];
+        }
+    
+        setInterval(() => {
+            updateTime();
+            updateDate();
+        }, 1000);
+    
+        // Initialize time and date on page load
+        updateTime();
+        updateDate();
+    </script>
+    
+</body>
+
+</html>

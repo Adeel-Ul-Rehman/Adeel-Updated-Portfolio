@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background: #60939f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    margin-top: -100px;
+    background: #014a5a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.calculator form input {
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+}
+form .display {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+form .display input {
+    text-align: right;
+    flex: 1;
+    font-size: 45px;
+    box-shadow: none;
+}
+form input.equal {
+    width: 145px;
+}
+form input.operator {
+    color: rgb(5, 96, 96);
+    background-color: cyan;
+}
+h1 {
+    background: #60939f;
+    text-align: center;
+    font-size: 60px;
+    color: cyan;
+    font-family: "Ga Maamli", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+form input.operator:hover,
+form input.operator:active {
+    box-shadow: 5px 5px 5px white, -5px -5px 5px rgb(9, 208, 208);
+}
+form input.digit:hover,
+form input.digit:active {
+    box-shadow: 5px 5px 5px cyan, -5px -5px 5px white;
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .container {
+        padding: 0;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .calculator {
+        margin-top: 0;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 60px;
+    }
+
+    form .display {
+        margin: 10px 0;
+    }
+
+    form .display input {
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .calculator form div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .calculator form input {
+        width: 23%; /* 4 buttons per row with small gap */
+        height: 50px;
+        margin: 5px 0;
+        font-size: 18px;
+    }
+
+    form input.equal {
+        width: 48%; /* Adjusted to fit two buttons in one row */
+    }
+
+    .calculator form input.operator {
+        font-size: 18px;
+    }
+}
